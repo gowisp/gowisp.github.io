@@ -14,8 +14,14 @@ const OUT = path.join(ROOT, "site");
 const NOINDEX_META =
   '<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet">';
 
+// This file is served from the root of gowisp.github.io, so it governs every
+// project Pages site on the host too. The capsule is disallowed; the pre-existing
+// project sites are carved back out so their crawlability is left as it was.
 const ROBOTS_TXT = `User-agent: *
 Disallow: /
+Allow: /roux-attorneys-concept/
+Allow: /steyn-prokureurs-concept/
+Allow: /armgate-pilot-flow/
 `;
 
 function isHtml(entry) {

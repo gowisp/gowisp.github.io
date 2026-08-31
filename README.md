@@ -1,5 +1,7 @@
 # Terminal Industries capsule preview
 
+Live at <https://gowisp.github.io/>.
+
 Browsing convenience only. This repository hosts the **already-built** parity
 output of the Terminal Industries Pilot Capsule so the Representative Slice can
 be opened in a browser without a local Node runtime.
@@ -59,9 +61,26 @@ A static host is weaker than the capsule's own server. Three differences:
 
 For fidelity work use the capsule's own runtime, not this preview.
 
+## Why the user site and not a project path
+
+The parity documents reference absolute root paths (`/_nuxt/...`,
+`/__replay/source/...`, `/__parity/bootstrap.js`). Served under
+`gowisp.github.io/<repo>/` every one of them would 404, and rewriting them would
+mean editing the byte-faithful documents and still missing the URLs Nuxt builds
+at runtime. Serving from the root of `gowisp.github.io` is what keeps the
+documents unedited.
+
 ## Search engines
 
 Every deployed document carries `noindex, nofollow, noarchive, noimageindex,
-nosnippet` and the site root serves a `Disallow: /` robots.txt. GitHub Pages
-cannot set an `X-Robots-Tag` header, so those two are the ceiling. The URL is
-public to anyone who has it.
+nosnippet` and the root serves a `Disallow: /` robots.txt. GitHub Pages cannot
+set an `X-Robots-Tag` header, so those two are the ceiling. **The URL is public
+to anyone who has it** - noindex keeps it out of search results, it does not put
+a lock on the door.
+
+Because robots.txt is per host, this one also governs every project Pages site
+under `gowisp.github.io`. The three that existed before this repository -
+`roux-attorneys-concept`, `steyn-prokureurs-concept`, `armgate-pilot-flow` - are
+carved back out with `Allow:` rules so their crawlability is unchanged. A new
+project site needs its own `Allow:` line in `tools/build-site.mjs` or it
+inherits the disallow.
