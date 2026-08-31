@@ -1,0 +1,1 @@
+function l(s,a){var i,f;const t={};for(const e of a??[]){const r=(i=e==null?void 0:e.field_id)==null?void 0:i.trim(),n=(f=e==null?void 0:e.value)==null?void 0:f.trim();r&&n&&(t[r]=n)}return Object.keys(t).length?{...s,salesforce_extra_fields:t}:s}export{l as w};

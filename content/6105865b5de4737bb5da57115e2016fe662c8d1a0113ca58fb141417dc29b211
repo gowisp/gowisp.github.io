@@ -1,0 +1,1 @@
+(function(){"use strict";self.addEventListener("message",async s=>{switch(s.data.type){case"frames":{const{frames:e}=s.data.payload,t=await Promise.all(e.map(async a=>({blob:await(await fetch(a)).blob(),frame:a})));self.postMessage({type:"blobs",payload:{blobs:t}})}}})})();

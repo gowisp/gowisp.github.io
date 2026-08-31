@@ -1,0 +1,1 @@
+@keyframes color-transition-bec5983c{0%{color:var(--c-light-light-gray)}30%{color:var(--c-lime)}to{color:var(--c-dark-green)}}.content__wrapper[data-v-bec5983c]{position:relative;z-index:1}@media (min-width:1024px){[data-v-bec5983c] .logo-grid{padding:5rem 0 12.5rem!important}.content__wrapper[data-v-bec5983c]{padding-bottom:7.5rem}}

@@ -1,0 +1,1 @@
+import{aq as r,Y as n,j as u,I as c,ao as f}from"./CvtfkAXb.js";const d=e=>{const a=r();n(()=>{const s=f();if(a.animate){e();return}const o=u(!1);c(()=>a.animate,t=>{t&&!o.value&&s.run(()=>{e(),o.value=!0})})})};export{d as u};
