@@ -59,6 +59,11 @@ A static host is weaker than the capsule's own server. Three differences:
 - One captured base image is both a file and a parent directory, so it is served
   through a directory index and reaches the browser after a 301.
 
+Routes are written as sibling `.html` files rather than directory indexes on
+purpose. A directory index makes the host 301 to a trailing slash, and the app's
+router does not match its own static routes that way - five of the seven pages
+rendered a client-side 404 before this was changed.
+
 For fidelity work use the capsule's own runtime, not this preview.
 
 ## Why the user site and not a project path

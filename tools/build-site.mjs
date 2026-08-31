@@ -29,8 +29,11 @@ function isHtml(entry) {
 }
 
 // A request path becomes a file on disk. Two shapes need translation:
-//   - HTML routes ("/why-terminal") -> "<route>/index.html", so the host serves
-//     them at their own URL with a text/html content type.
+//   - HTML routes ("/why-terminal") -> a sibling "<route>.html". The host resolves
+//     the extensionless request to it directly. A "<route>/index.html" directory
+//     index would work for the host but 301s to "<route>/", and the app's router
+//     does not match its own static routes with a trailing slash: every page but
+//     the home route and the dynamic article route rendered a client-side 404.
 //   - A path that is ALSO the parent directory of other paths (one captured
 //     Storyblok base image whose transforms live beneath it) -> "<path>/index.html".
 //     The host 301s "<path>" to "<path>/" and serves the bytes; <img> sniffs the
@@ -38,7 +41,7 @@ function isHtml(entry) {
 function destinationFor(requestPath, { html, isDirectoryPrefix }) {
   const clean = requestPath.replace(/^\/+/u, "");
   if (requestPath === "/") return "index.html";
-  if (html) return path.posix.join(clean, "index.html");
+  if (html) return `${clean}.html`;
   if (isDirectoryPrefix) return path.posix.join(clean, "index.html");
   return clean;
 }
